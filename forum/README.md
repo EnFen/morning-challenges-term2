@@ -1,4 +1,4 @@
-# README
+r# README
 
 ## Description of application
 This is a simple question/answer forum application that we could use for questions and answers for our class. It uses bootstrap for some minimal styling and modals.<br><br>
