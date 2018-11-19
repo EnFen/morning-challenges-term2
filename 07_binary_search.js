@@ -17,7 +17,22 @@ Example:
 */
 
 function binarySearch(sortedArray, searchValue) {
-    // Your code here
+    let index = sortedArray.indexOf(searchValue)
+    let stepCount = 1
+
+    if (index == -1) {
+        return 'Not found'
+    }
+
+    for (let mid = Math.floor(sortedArray.length / 2); sortedArray[mid] != searchValue; mid = Math.floor(sortedArray.length / 2)) {
+        if (sortedArray[mid] > searchValue) {
+            sortedArray = sortedArray.slice(0, mid)
+        } else if (sortedArray[mid] < searchValue) {
+            sortedArray = sortedArray.slice(mid)
+        }
+        stepCount++
+    }
+    return [index, stepCount]
 }
 
 
@@ -35,5 +50,11 @@ describe('Count loops', function () {
     })
     it('Should count half the array length when value is at an end', function () {
         assert.deepEqual([6, 3], binarySearch([1, 3, 7, 10, 14, 19, 31], 31))
+    })
+    it('Should return total steps to reach search value when not on an end', function () {
+        assert.deepEqual([5, 2], binarySearch([1, 3, 7, 10, 14, 19, 31], 19))
+    })
+    it('Should return "Not found" if search value is not in array', function () {
+        assert.deepEqual('Not found', binarySearch([1, 3, 7, 10, 14, 19, 31], 41))
     })
 })
