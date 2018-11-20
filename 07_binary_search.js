@@ -17,27 +17,24 @@ Example:
 */
 
 function binarySearch(sortedArray, searchValue) {
-    let index = sortedArray.indexOf(searchValue)
-    let stepCount = 1
+    start = 0
+    stop = sortedArray.length - 1
 
     function midPoint() {
-        return Math.floor(sortedArray.length / 2)
+        return Math.ceil((start + stop) / 2)
     }
 
-    if (index == -1) {
-        return 'Not found'
-    }
+    let mid = midPoint()
 
-    for (let mid = midPoint(); sortedArray[mid] != searchValue; mid = midPoint()) {
-        // if (sortedArray[mid] > searchValue) {
-        //     sortedArray = sortedArray.slice(0, mid)
-        // } else if (sortedArray[mid] < searchValue) {
-        //     sortedArray = sortedArray.slice(mid)
-        // }
-        (sortedArray[mid] > searchValue) ? sortedArray = sortedArray.slice(0, mid): sortedArray = sortedArray.slice(mid)
+    let stepCount = 1
+
+    while (sortedArray[mid] !== searchValue && start < stop) {
+        sortedArray[mid] > searchValue ? stop = mid - 1 : start = mid + 1
+        mid = midPoint()
         stepCount++
     }
-    return [index, stepCount]
+
+    return sortedArray[mid] !== searchValue ? 'Not found' : [mid, stepCount]
 }
 
 
