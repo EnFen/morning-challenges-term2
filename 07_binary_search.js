@@ -20,16 +20,21 @@ function binarySearch(sortedArray, searchValue) {
     let index = sortedArray.indexOf(searchValue)
     let stepCount = 1
 
+    function midPoint() {
+        return Math.floor(sortedArray.length / 2)
+    }
+
     if (index == -1) {
         return 'Not found'
     }
 
-    for (let mid = Math.floor(sortedArray.length / 2); sortedArray[mid] != searchValue; mid = Math.floor(sortedArray.length / 2)) {
-        if (sortedArray[mid] > searchValue) {
-            sortedArray = sortedArray.slice(0, mid)
-        } else if (sortedArray[mid] < searchValue) {
-            sortedArray = sortedArray.slice(mid)
-        }
+    for (let mid = midPoint(); sortedArray[mid] != searchValue; mid = midPoint()) {
+        // if (sortedArray[mid] > searchValue) {
+        //     sortedArray = sortedArray.slice(0, mid)
+        // } else if (sortedArray[mid] < searchValue) {
+        //     sortedArray = sortedArray.slice(mid)
+        // }
+        (sortedArray[mid] > searchValue) ? sortedArray = sortedArray.slice(0, mid): sortedArray = sortedArray.slice(mid)
         stepCount++
     }
     return [index, stepCount]
