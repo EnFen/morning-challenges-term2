@@ -13,31 +13,57 @@
  -->
 <!doctype html>
 <html>
-  <head>
-    <title>Welcome</title>
 
-    <style>
+<head>
+  <title>Welcome</title>
+
+  <style>
     body {
       text-align: center;
     }
+    input {
+      padding: .5rem 2rem;
+    }
     </style>
-  </head>
+</head>
 
-  <body>
+<body>
 
-    <p><input type="text" placeholder="Enter your name"></p>
+  <p><input type="text" name="fname" id="fname" placeholder="Enter your first name"></p>
+  <p><input type="text" name="lname" id="lname" placeholder="Enter your last name"></p>
 
-    <h1></h1>
+  <h1></h1>
 
-  </body>
+</body>
 
-  <script>
-  const name = document.querySelector('input')
+<script>
+  const fname = document.querySelector('#fname')
+  const lname = document.querySelector('#lname')
   const welcomeMessage = document.querySelector('h1')
-  name.onkeyup = function () {
-    // hint: name.value gives you the current text in the input box
-    welcomeMessage.textContent = `Welcome, ${name.value}!`;
+  welcomeMessage.textContent = ""
+
+  function reviseNameContent() {
+    welcomeMessage.textContent = ""
+    welcomeMessage.textContent += 'Welcome ' + fname.value.toUpperCase() + ' ' + lname.value.toUpperCase() + '!';
   }
-  </script>
+
+  fname.onkeyup = function () {
+    // hint: name.value gives you the current text in the input box
+    if (fname.value === "" && lname.value === "") {
+      welcomeMessage.textContent = ""
+    } else {
+      reviseNameContent()
+    }
+  }
+
+  lname.onkeyup = function () {
+    // hint: name.value gives you the current text in the input box
+    if (lname.value === "" && fname.value === "") {
+      welcomeMessage.textContent = ""
+    } else {
+      reviseNameContent()
+    }
+  }
+</script>
 
 </html>
