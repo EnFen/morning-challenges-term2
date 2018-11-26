@@ -17,21 +17,32 @@ Try drawing the function out first if the arrays are a little confusing.
 */
 
 function multiplyMatrices(matrixOne, matrixTwo) {
-    let result = []
-    for (let row of matrixTwo) {
-        if (row.length != matrixOne.length) return null
-    }
-    for (let row of matrixOne) {
-        if (row.length != matrixTwo.length) return null
-        let vector = []
-        for (let i in matrixTwo[0]) {
-            for (let j in row) {
-                vector[i] = vector[i] + (matrixOne[matrixOne.indexOf(row)][j] * matrixTwo[j][i]) || (matrixOne[matrixOne.indexOf(row)][j] * matrixTwo[j][i])
-            }
+    if (matrixOne.map((a) => a.length == matrixTwo.length).includes(false) || matrixTwo.map((a) => a.length == matrixOne.length).includes(false)) return null
+    result = []
+    matrixOne.map((x) => {
+        vector = []
+        for (let a = 0; a < matrixOne.length; a++) {
+            vector.push(x.map((i, j) => i * matrixTwo[j][a]).reduce((f, g) => f + g))
         }
         result.push(vector)
-    }
+    })
     return result
+
+    // let result = []
+    // for (let row of matrixTwo) {
+    //     if (row.length != matrixOne.length) return null
+    // }
+    // for (let row of matrixOne) {
+    //     if (row.length != matrixTwo.length) return null
+    //     let vector = []
+    //     for (let i in matrixTwo[0]) {
+    //         for (let j in row) {
+    //             vector[i] = vector[i] + (matrixOne[matrixOne.indexOf(row)][j] * matrixTwo[j][i]) || (matrixOne[matrixOne.indexOf(row)][j] * matrixTwo[j][i])
+    //         }
+    //     }
+    //     result.push(vector)
+    // }
+    // return result
 }
 
 
