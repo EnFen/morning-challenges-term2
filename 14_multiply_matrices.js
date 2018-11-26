@@ -17,7 +17,7 @@ Try drawing the function out first if the arrays are a little confusing.
 */
 
 function multiplyMatrices(matrixOne, matrixTwo) {
-    if (matrixOne.map((a) => a.length == matrixTwo.length).includes(false) || matrixTwo.map((a) => a.length == matrixOne.length).includes(false)) return null
+    if (matrixOne.map((a) => a.length == matrixTwo.length).includes(false)) return null
     result = []
     matrixOne.map((x) => {
         vector = []
