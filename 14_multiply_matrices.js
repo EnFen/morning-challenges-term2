@@ -17,18 +17,67 @@ Try drawing the function out first if the arrays are a little confusing.
 */
 
 function multiplyMatrices(matrixOne, matrixTwo) {
-    // Your code here    
+    let result = []
+    for (let row of matrixTwo) {
+        if (row.length != matrixOne.length) return null
+    }
+    for (let row of matrixOne) {
+        if (row.length != matrixTwo.length) return null
+        let vector = []
+        for (let i in matrixTwo[0]) {
+            for (let j in row) {
+                vector[i] = vector[i] + (matrixOne[matrixOne.indexOf(row)][j] * matrixTwo[j][i]) || (matrixOne[matrixOne.indexOf(row)][j] * matrixTwo[j][i])
+            }
+        }
+        result.push(vector)
+    }
+    return result
 }
 
 
-const assert = require ('assert');
+const assert = require('assert');
 
 describe('Matrix multiplication', function () {
     it('Should return the multipilcation of a matrix', function () {
-        assert.deepEqual([[58,64], [139,154]], multiplyMatrices([[1,2,3],[4,5,6]], [[7,8],[9,10],[11,12]]))
+        assert.deepEqual([
+            [58, 64],
+            [139, 154]
+        ], multiplyMatrices([
+            [1, 2, 3],
+            [4, 5, 6]
+        ], [
+            [7, 8],
+            [9, 10],
+            [11, 12]
+        ]))
+        assert.deepEqual([
+            [84, 90, 96],
+            [201, 216, 231],
+            [318, 342, 366]
+        ], multiplyMatrices([
+            [1, 2, 3],
+            [4, 5, 6],
+            [7, 8, 9]
+        ], [
+            [10, 11, 12],
+            [13, 14, 15],
+            [16, 17, 18]
+        ]))
     })
-    it('Should return null if the matrix cannot be multiplied', function() {
-        assert.deepEqual(null, multiplyMatrices( [[8,12,5], [40,21,8,17]], [[3,2,1,6], [7,4,1,9]]))
-        assert.deepEqual(null, multiplyMatrices( [[8,12,5], [40,21,8]], [[3,2,1], [7,4,1]]))
+    it('Should return null if the matrix cannot be multiplied', function () {
+        assert.deepEqual(null, multiplyMatrices([
+            [8, 12, 5],
+            [40, 21, 8, 17]
+        ], [
+            [3, 2, 1, 6],
+            [7, 4, 1, 9]
+        ]))
+        assert.deepEqual(null, multiplyMatrices([
+            [8, 12, 5],
+            [40, 21, 8]
+        ], [
+            [3, 2, 1],
+            [7, 4, 1]
+        ]))
     })
 })
