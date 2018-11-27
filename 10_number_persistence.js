@@ -15,7 +15,7 @@ function persistence(num) {
     let count = 0
     let digits = num.toString().split("")
     while (digits.length > 1) {
-        digits = (digits.reduce((a, b) => a * b)).toString().split("")
+        digits = (digits.reduce((a, b) => a * b, 1)).toString().split("")
         count++
     }
     return count
