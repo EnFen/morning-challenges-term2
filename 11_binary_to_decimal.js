@@ -13,9 +13,14 @@ Test: mocha 11_binary_to_decimal
 */
 
 function binaryToDecimal(binaryNumber) {
+    // return binaryNumber.toString().match(/[2-9]/) ? null : binaryNumber.toString().split("").reverse().map((a, b) => a * (2 ** b)).reduce((x, y) => x + y)
+    // if (binaryNumber.toString().match(/[2-9]/)) return null
+    // let bin = binaryNumber.toString().split("").reverse()
+    // return bin.map((a, b) => a * (2 ** b)).reduce((x, y) => x + y)
+
     let result = 0
-    let bin = binaryNumber.toString().split("").reverse()
-    for (let i = 0; i < bin.length; i++) {
+    let bin = binaryNumber.toString().split("")
+    for (let i = (bin.length - 1); i >= 0; i--) {
         if (bin[i] == 0 || bin[i] == 1) {
             result += (2 ** i) * bin[i]
         } else {
