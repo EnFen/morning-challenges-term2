@@ -19,15 +19,17 @@ function vowels(string) {
     return string.match(/[aeiou]/gi)
 }
 
+module.exports.vowels = vowels
 
-var assert = require('assert');
 
-describe('vowels', function () {
-    it('Should return the vowels from a string', function () {
-        assert.deepEqual(vowels("The quick brown fox"), ["e", "u", "i", "o", "o"]);
-        assert.deepEqual(vowels("Hello World"), ["e", "o", "o"]);
-    })
-    it('Test vowels casing', function () {
-        assert.deepEqual(vowels("cAse tEst"), ["A", "e", "E"])
-    })
-})
+// var assert = require('assert');
+
+// describe('vowels', function () {
+//     it('Should return the vowels from a string', function () {
+//         assert.deepEqual(vowels("The quick brown fox"), ["e", "u", "i", "o", "o"]);
+//         assert.deepEqual(vowels("Hello World"), ["e", "o", "o"]);
+//     })
+//     it('Test vowels casing', function () {
+//         assert.deepEqual(vowels("cAse tEst"), ["A", "e", "E"])
+//     })
+// })
