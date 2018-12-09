@@ -38,8 +38,8 @@ module.exports = class Player {
         return Math.random() > 0.8 ? true : false
     }
 
-    // Determines the amount of damage inflictedby the player
+    // Determines the amount of damage inflictedby the player, and whether the attack was critical
     get attack() {
-        return Math.floor(Math.random() * this.power)
+        return [Math.floor(Math.random() * (this.power + 1)), this.criticalHit]
     }
 }
