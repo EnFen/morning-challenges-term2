@@ -1,8 +1,12 @@
+let Player = require('./playerClass')
+
 module.exports = class Fight {
+
     // Initialise Fight class
-    constructor(player1, player2) {
+    constructor(player1, player2, output) {
         this.player1 = player1
         this.player2 = player2
+        this.output = output
 
         // Start fight
         console.clear()
@@ -11,16 +15,65 @@ module.exports = class Fight {
         console.log('LET\'S GET READY TO RUUUUUUMBLE!!!')
 
         // Call fight method
-        setTimeout(this.fight.bind(this), 2000)
+        setTimeout(this.progress.bind(this), 2000)
     }
+
     // Define encounter
     encounter(attacker, defender) {
-        defender.receivesDamage(attacker.attack)
-        defender.status
+        // Determine attack strength
+        let damage = attacker.attack
+        let criticalHit = attacker.criticalHit
+
+        // If critical hit, double attack power
+        if (damage != 0 && criticalHit) {
+            damage *= 2
+        }
+        // Damage comment
+        if (damage == 0) {
+            console.log(`${attacker.name} misses completely, inflicting 0 damage...`)
+        } else if (criticalHit) {
+            console.log(`CRITICAL HIT!! ${attacker.name} delivers ${damage} damage.`)
+        } else if (damage < 0.33 * attacker.power) {
+            console.log(`${attacker.name} delivers a weak hit of ${damage} damage.`)
+        } else if (damage > 0.67 * attacker.power) {
+            console.log(`${attacker.name} delivers a powerful hit of ${damage} damage!`)
+        } else {
+            console.log(`${attacker.name} delivers ${damage} damage.`)
+        }
+
+        // Deliver attack to defender
+        defender.receivesDamage(damage)
+
+
+        // Determine number of consecutive hits to defender
+        if (defender.consecutiveHits != Player.getCounter) {
+            attacker.consecutiveHits = 0
+            defender.consecutiveHits = 0
+            Player.resetCounter
+        }
+
+        Player.counterUp
+        defender.consecutiveHits++
+
+        // Consecutive hits commentary
+        if (defender.consecutiveHits % 3 == 0 && Player.getCounter % 3 == 0) {
+            console.log(`${defender.name} is getting absolutely pummelled!!`)
+        } else if (defender.consecutiveHits % 5 == 0 && Player.getCounter % 5 == 0) {
+            console.log('Well, this fight is completely one sided...')
+        }
+
+        // Report defender status
+        if (defender.health <= 0) {
+            console.log(`${defender.name} has 0 health remaining!`)
+        } else {
+            console.log(`${defender.name} has ${defender.health} health remaining.`)
+        }
+
+
         console.log('\n')
     }
 
-    fight() {
+    progress() {
         // continue randomised encounters until one player's health reaches 0
         while (this.player1.isAlive && this.player2.isAlive) {
             // Randomise player turn => returns either 1 or 0
