@@ -4,9 +4,16 @@
 // Prettify the page?
 // Add web form to page to allow user to create their own player 
 
+// **
+// Needed for node.js to run server side
+
 // let Player = requirejs(['./playerClass'])
 // let Fight = requirejs(['./fightClass'])
 // let Commentary = requirejs(['./commentary'])
+
+// **
+
+
 
 // Instantiate Players
 bill = new Player('Bill', 200, 25)

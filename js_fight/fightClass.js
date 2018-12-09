@@ -1,5 +1,10 @@
-// let Player = require('./playerClass')
+// **
+// Needed for node.js to run server side
+
 // module.exports =
+// let Player = require('./playerClass')
+
+// **/
 
 class Fight {
 

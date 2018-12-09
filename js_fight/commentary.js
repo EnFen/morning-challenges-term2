@@ -1,4 +1,9 @@
+// **
+// Needed for node.js to run server side
+
 // module.exports =
+
+// **
 
 class Commentary {
 
