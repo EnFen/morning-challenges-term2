@@ -35,7 +35,7 @@ module.exports = class Fight {
         Player.counterUp
         defender.consecutiveHits++
 
-        // // Damage commentary
+        // Damage commentary
         this.output.damageComment(attacker.name, attacker.power, damage, criticalHit)
 
         // Consecutive hits commentary
