@@ -15,5 +15,7 @@ ted = new Player('Ted', 200, 25)
 // Instantiate FightCommentary
 commentary = new Commentary()
 
-// Instantiate Fight
-fight = new Fight(bill, ted, commentary)
+document.getElementById('start').addEventListener('click', () => {
+    // Instantiate Fight
+    fight = new Fight(bill, ted, commentary)
+})
