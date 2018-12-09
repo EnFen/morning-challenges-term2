@@ -1,4 +1,6 @@
-module.exports = class Commentary {
+// module.exports =
+
+class Commentary {
 
     // Start fight
     startFight(challenger1, challenger2) {

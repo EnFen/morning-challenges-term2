@@ -1,6 +1,7 @@
-let Player = require('./playerClass')
+// let Player = require('./playerClass')
+// module.exports =
 
-module.exports = class Fight {
+class Fight {
 
     // Initialise Fight class
     constructor(player1, player2, output) {

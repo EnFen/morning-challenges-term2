@@ -1,4 +1,6 @@
-module.exports = class Player {
+// module.exports =
+
+class Player {
 
     // Define class level properties and methods
     static get resetCounter() {

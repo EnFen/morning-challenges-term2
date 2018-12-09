@@ -4,9 +4,9 @@
 // Prettify the page?
 // Add web form to page to allow user to create their own player 
 
-let Player = require('./playerClass')
-let Fight = require('./fightClass')
-let Commentary = require('./commentary')
+// let Player = requirejs(['./playerClass'])
+// let Fight = requirejs(['./fightClass'])
+// let Commentary = requirejs(['./commentary'])
 
 // Instantiate Players
 bill = new Player('Bill', 200, 25)
